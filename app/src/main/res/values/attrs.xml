@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SlidingUpPanelLayout">
+        <attr name="visibleBarHeight" format="dimension" />
+        <attr name="hideableBarHeight" format="dimension" />
+        <attr name="visibleContentHeight" format="dimension" />
+        <attr name="toolBarHeight" format="dimension" />
+        <attr name="hideOnExpandedView" format="reference" />
+        <attr name="isDragableBarBelowToolBar" format="boolean" />
+        <attr name="dragableView" format="reference" />
+        <attr name="scrollableView" format="reference" />
+        <attr name="minFlingVelocity" format="integer" />
+        <attr name="canHandleDraggingEventOnHideableBar" format="boolean" />
+        <attr name="slidingMethod" format="enum">
+            <enum name="AllSlidingPanel" value="0" />
+            <enum name="WhenScrollableViewNoLongerConsumeEvent" value="1" />
+            <enum name="OnlyDragableView" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

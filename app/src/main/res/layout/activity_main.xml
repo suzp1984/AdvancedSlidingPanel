@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<io.github.jacobsu.advancedslidingpanel.widget.SlidingUpPanelLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/slidingUpLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:dragableView="@id/hintBar"
+        app:visibleBarHeight="@dimen/hintBarHeight"
+        app:slidingMethod="WhenScrollableViewNoLongerConsumeEvent"
+        tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+           android:id="@+id/slidingPanel"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+       <LinearLayout
+               android:id="@+id/hintBar"
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/hintBarHeight"
+               android:gravity="center_horizontal|top"
+               android:orientation="horizontal"
+               android:background="@color/colorAccent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+            <Button
+                    android:id="@+id/buttonOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="One"/>
+           <Button
+                   android:id="@+id/buttonTwo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="two"/>
+       </LinearLayout>
+
+       <fragment
+               android:id="@+id/itemFragment"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+                class="io.github.jacobsu.advancedslidingpanel.fragment.ItemFragment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hintBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</io.github.jacobsu.advancedslidingpanel.widget.SlidingUpPanelLayout>
