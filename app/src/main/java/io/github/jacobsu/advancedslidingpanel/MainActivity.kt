@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.BounceInterpolator
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import io.github.jacobsu.advancedslidingpanel.widget.ArrowDrawable
 import io.github.jacobsu.advancedslidingpanel.widget.IVerticalScrollableView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -40,9 +41,11 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
 
         startAnimation()
+        startArrowAnimation()
     }
 
     override fun onPause() {
+        stopArrowAnimation()
         stopAnimation()
 
         super.onPause()
@@ -111,5 +114,51 @@ class MainActivity : AppCompatActivity() {
         }
 
         slidingUpLayout.tag = null
+    }
+
+    private fun startArrowAnimation() {
+        val arrowWidth = resources.getDimensionPixelSize(R.dimen.arrowViewHeight) / 2
+
+        val layerDrawable = arrowView.background as LayerDrawable
+
+        val alphaAnimator = ValueAnimator.ofInt(0, 255)
+        alphaAnimator.interpolator = LinearInterpolator()
+        alphaAnimator.repeatMode = ValueAnimator.RESTART
+        alphaAnimator.repeatCount = ValueAnimator.INFINITE
+        alphaAnimator.duration = 900
+        alphaAnimator.addUpdateListener {
+            (it?.animatedValue as? Int)?.also {
+                layerDrawable.getDrawable(0).alpha = it
+                layerDrawable.getDrawable(1).alpha = 255 - it
+                layerDrawable.invalidateSelf()
+            }
+        }
+
+        val translationAnimator = ValueAnimator.ofInt(0, arrowWidth * 2)
+        translationAnimator.interpolator = LinearInterpolator()
+        translationAnimator.repeatMode = ValueAnimator.RESTART
+        translationAnimator.repeatCount = ValueAnimator.INFINITE
+        translationAnimator.duration = 900
+        translationAnimator.addUpdateListener {
+            (it?.animatedValue as? Int)?.also {
+                layerDrawable.setLayerInset(0, it, 0, arrowWidth * 2 - it, 0)
+                layerDrawable.setLayerInset(1, arrowWidth * 2  - it, 0, it, 0)
+                layerDrawable.invalidateSelf()
+            }
+        }
+
+        val animatorSet = AnimatorSet()
+        animatorSet.playTogether(alphaAnimator, translationAnimator)
+        arrowView.tag = animatorSet
+
+        animatorSet.start()
+    }
+
+    private fun stopArrowAnimation() {
+        arrowView.tag?.also {
+            (it as? Animator)?.cancel()
+        }
+
+        arrowView.tag = null
     }
 }
