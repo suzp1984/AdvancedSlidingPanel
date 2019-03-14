@@ -47,6 +47,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="One"/>
+
+           <View
+                   android:id="@+id/arrowView"
+                   android:layout_width="@dimen/hintBarHeight"
+                   android:layout_height="@dimen/hintBarHeight"/>
+
            <Button
                    android:id="@+id/buttonTwo"
                    android:layout_width="wrap_content"

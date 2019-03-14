@@ -23,7 +23,29 @@ class ArrowDrawable : Drawable() {
         path = Path()
     }
 
+    var strokeWidth: Float = defaultStrokeWidth
+        set(value) {
+            if (field != value) {
+                field = value
+
+                strokePaint.strokeWidth = value
+                invalidateSelf()
+            }
+        }
+
+    @ColorInt
+    var strokeColor: Int = defaultStrokeColor
+        set(value) {
+            if (field != value) {
+                field = value
+
+                strokePaint.color = value
+                invalidateSelf()
+            }
+        }
+
     override fun draw(canvas: Canvas) {
+        canvas.drawPath(path, strokePaint)
     }
 
     override fun setAlpha(alpha: Int) {
@@ -37,6 +59,24 @@ class ArrowDrawable : Drawable() {
     override fun setColorFilter(cf: ColorFilter?) {
         cf?.also {
             strokePaint.colorFilter = it
+        }
+    }
+
+    override fun onBoundsChange(bounds: Rect?) {
+        resetArrowPath()
+    }
+
+    private fun resetArrowPath() {
+        path.reset()
+
+        val boundsWithStroke = Rect(bounds).apply {
+            inset((strokeWidth / 2).toInt(), (strokeWidth / 2).toInt())
+        }
+
+        boundsWithStroke.apply {
+            path.moveTo(left.toFloat(), top.toFloat())
+            path.lineTo(right.toFloat(), (bottom / 2 + top / 2).toFloat())
+            path.lineTo(left.toFloat(), bottom.toFloat())
         }
     }
 }

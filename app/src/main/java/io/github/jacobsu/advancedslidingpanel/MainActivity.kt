@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.BounceInterpolator
 import android.view.animation.DecelerateInterpolator
+import io.github.jacobsu.advancedslidingpanel.widget.ArrowDrawable
 import io.github.jacobsu.advancedslidingpanel.widget.IVerticalScrollableView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity() {
                 slidingUpLayout.verticalScrollableView = it
             }
         }
+
+        arrowView.background = ArrowDrawable()
     }
 
     override fun onResume() {
