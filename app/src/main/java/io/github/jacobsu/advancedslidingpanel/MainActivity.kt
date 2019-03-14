@@ -3,6 +3,7 @@ package io.github.jacobsu.advancedslidingpanel
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
+import android.graphics.drawable.LayerDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.BounceInterpolator
@@ -23,7 +24,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        arrowView.background = ArrowDrawable()
+
+        val arrowWidth = resources.getDimensionPixelSize(R.dimen.arrowViewHeight) / 2
+
+        val layerDrawable = LayerDrawable(arrayOf(ArrowDrawable(), ArrowDrawable()))
+        layerDrawable.setLayerInset(0, 0, 0, arrowWidth * 2, 0)
+        layerDrawable.setLayerInset(1, arrowWidth * 2, 0, 0, 0)
+        layerDrawable.getDrawable(0).alpha = 100
+
+        arrowView.background = layerDrawable
+
     }
 
     override fun onResume() {

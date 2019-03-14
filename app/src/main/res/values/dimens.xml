@@ -2,4 +2,6 @@
 <resources>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="hintBarHeight">78dp</dimen>
+    <dimen name="arrowViewHeight">20dp</dimen>
+    <dimen name="arrowViewWidth">30dp</dimen>
 </resources>

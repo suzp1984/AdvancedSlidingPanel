@@ -50,8 +50,8 @@
 
            <View
                    android:id="@+id/arrowView"
-                   android:layout_width="@dimen/hintBarHeight"
-                   android:layout_height="@dimen/hintBarHeight"/>
+                   android:layout_width="@dimen/arrowViewWidth"
+                   android:layout_height="@dimen/arrowViewHeight"/>
 
            <Button
                    android:id="@+id/buttonTwo"
