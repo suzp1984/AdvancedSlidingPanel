@@ -4,4 +4,5 @@
     <dimen name="hintBarHeight">78dp</dimen>
     <dimen name="arrowViewHeight">20dp</dimen>
     <dimen name="arrowViewWidth">30dp</dimen>
+    <dimen name="fakeViewWidth">60dp</dimen>
 </resources>

@@ -3,6 +3,7 @@ package io.github.jacobsu.advancedslidingpanel
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.graphics.drawable.LayerDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
 
         arrowView.background = layerDrawable
 
+        hintBar.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {
