@@ -4,10 +4,13 @@ import android.animation.Animator
 import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.animation.LinearInterpolator
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : AppCompatActivity() {
+
+    private lateinit var leftPanel: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,6 +18,7 @@ class SecondActivity : AppCompatActivity() {
 
         val fakeViewWidth = resources.getDimensionPixelSize(R.dimen.fakeViewWidth)
 
+        leftPanel = stubView.inflate()
         leftPanel.translationX = - fakeViewWidth.toFloat()
 
         startAnimation()

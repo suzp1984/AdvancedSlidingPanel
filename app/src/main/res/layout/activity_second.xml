@@ -19,32 +19,41 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/leftPanel"
+    <ViewStub
+            android:id="@+id/stubView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:inflatedId="@+id/leftPanel"
+            android:layout="@layout/left_panel_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-        <View
-            android:id="@+id/fakeView"
-            android:layout_width="@dimen/fakeViewWidth"
-            android:layout_height="match_parent"
-            android:background="@color/colorYellow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <TextView
-                android:id="@+id/label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Label"
-                android:textColor="@color/colorAccent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/fakeView"/>
+    <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--android:id="@+id/leftPanel"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent">-->
+        <!--<View-->
+            <!--android:id="@+id/fakeView"-->
+            <!--android:layout_width="@dimen/fakeViewWidth"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorYellow"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent" />-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--<TextView-->
+                <!--android:id="@+id/label"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Label"-->
+                <!--android:textColor="@color/colorAccent"-->
+                <!--app:layout_constraintTop_toTopOf="parent"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintStart_toEndOf="@id/fakeView"/>-->
+
+    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
